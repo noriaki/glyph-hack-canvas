@@ -1,3 +1,6 @@
 [submodule "js/jcanvas"]
 	path = js/jcanvas
 	url = https://github.com/caleb531/jcanvas.git
+[submodule "js/jquery-class"]
+	path = js/jquery-class
+	url = https://github.com/mach3/js-jquery-class.git
