@@ -4,3 +4,9 @@
 [submodule "js/jquery-class"]
 	path = js/jquery-class
 	url = https://github.com/mach3/js-jquery-class.git
+[submodule "js/toBlob"]
+	path = js/toBlob
+	url = https://github.com/eligrey/canvas-toBlob.js.git
+[submodule "js/file-save"]
+	path = js/file-save
+	url = https://github.com/eligrey/FileSaver.js.git
