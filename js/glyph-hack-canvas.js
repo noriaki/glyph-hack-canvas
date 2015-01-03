@@ -43,6 +43,7 @@ var Stage = Class.get({
 var Glyph = Class.get({
     DRAWING: false,
     DRAWN: false,
+    EVENT_HACKED: 'glyphhacked',
     vertexes: [],
     lines: [],
     initialize: function(stage) { this.stage = stage; },
@@ -94,6 +95,7 @@ var Glyph = Class.get({
         $.stage.rewind();
         this.DRAWN = true;
         this.empty_vertexes();
+        this.trigger(this.EVENT_HACKED);
         return true;
     },
     empty_vertexes: function() {
