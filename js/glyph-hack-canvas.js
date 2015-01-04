@@ -1,19 +1,13 @@
 // ----- Stage
 var Stage = Class.get({
-    LAYER_GROUPS: [
-        { name: 'bg', type: 'rectangle' },
-        { name: 'lines', type: 'line' },
-        { name: 'vertexes', type: 'arc' },
-        { name: 'particles', type: 'arc' }
-    ],
     POINTS: [
-        [320, 80],
-        [80, 218], [560, 218],
-        [200, 287], [440, 287],
-        [320, 356],
-        [200, 425], [440, 425],
-        [80, 494], [560, 494],
-        [320, 632]
+        [320, 72],
+        [106, 196], [534, 196],
+        [213, 258], [427, 258],
+        [320, 320],
+        [213, 382], [427, 382],
+        [106, 444], [534, 444],
+        [320, 568]
     ],
     initialize: function(stage) {
         this.stage = stage;
@@ -32,10 +26,11 @@ var Stage = Class.get({
             .on('mouseup touchend', this.Glyph.end_fn())
             .on('mouseup touchend', this.Particles.end_fn());
     },
-    rewind: function() {
+    rewind: function(func) {
         $.each([
             this.BackGround, this.Glyph, this.Vertexes
         ], function(i, shapes) { shapes.rewind(); });
+        if($.isFunction(func)) func();
     }
 });
 
@@ -91,11 +86,11 @@ var Glyph = Class.get({
         }
     },
     end: function() {
+        var self = this;
         this.DRAWING = false;
-        $.stage.rewind();
+        $.stage.rewind(function() { self.trigger(self.EVENT_HACKED); });
         this.DRAWN = true;
         this.empty_vertexes();
-        this.trigger(this.EVENT_HACKED);
         return true;
     },
     empty_vertexes: function() {
